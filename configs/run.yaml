@@ -1,0 +1,7 @@
+defaults:
+  - _self_
+  - candidate-generation: default.yaml
+  - geo-estimation: default.yaml
+  - location-ranking: default.yaml
+  - metadata-extractor: default.yaml 
+  - streetview-image-scraper: default.yaml
