@@ -20,19 +20,27 @@ def init_pipeline(cfg: DictConfig):
     logger.info(f"Instantiating candidate generation module <{cfg['location-ranking']._target_}>")
     loc_ranker = hydra.utils.instantiate(cfg["location-ranking"])
     
-    pipeline = [metadata_extractor, 
-               candidate_generator,
-               geo_estimator, 
-               image_scraper,
-               loc_ranker]
+    pipeline = [
+        metadata_extractor, 
+        candidate_generator,
+        geo_estimator, 
+        image_scraper,
+        loc_ranker
+    ]
     
     return pipeline
-    
 
-@hydra.main(config_path="../../configs", config_name="run.yaml")
+@hydra.main(config_path="../../configs", config_name="run.yaml", version_base="1.1")
 def main(cfg: DictConfig):
     logger.info(f"\nConfigs: \n {OmegaConf.to_yaml(cfg)}")
     pipeline = init_pipeline(cfg)
+    output = {
+        "image": cfg.img
+    }
+    for module in pipeline:
+        output = module(**output)
+        print(module, output)
+    return output
 
 if __name__ == "__main__":
     main()

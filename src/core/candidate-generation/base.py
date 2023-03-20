@@ -25,5 +25,9 @@ class CandidateGenerator:
         candidate_grids, filter_info = self.generate_candidates(image, metadata)
         return candidate_grids, filter_info
 
+    def __call__(self, *args, **kwargs):
+        """Run and return output"""
+        raise NotImplementedError("Subclasses should implement this method.")
+
     def __str__(self):
         return f"Candidate Generator"

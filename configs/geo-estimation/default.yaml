@@ -1,2 +1,1 @@
-_target_: geo-estimation.base.GeolocationEstimator
-
+_target_: src.core.geo-estimation.random_geoestimator.RandomGeolocationEstimator

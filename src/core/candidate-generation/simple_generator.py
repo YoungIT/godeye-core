@@ -7,12 +7,21 @@ class RandomCandidateGenerator(CandidateGenerator):
         self.num_candidates = num_candidates
         
     def get_filter_info(self, image):
-        return [0, 20]
+        return [0, self.num_candidates]
     
     def generate_candidates(self, image, metadata):
         filter_info = self.get_filter_info(image)
-        for _ in range(self.num_candidates):
-            grid_idxs = random.randint(filter_info[0], filter_info[1])
-            
-        return self.map_grids[grid_idxs], filter_info
         
+        return {
+            "image": image,
+            "grid_candidates": random.sample(self.map_grids, k=2),
+            "metadata": metadata,
+            "filter_info": filter_info,
+        }
+        
+    def __call__(self, *args, **kwargs):
+        return self.generate_candidates(
+            kwargs.get("image"), 
+            kwargs.get("metadata")
+        )
+

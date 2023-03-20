@@ -1,1 +1,1 @@
-_target_: streetview-image-scraper.base.StreetViewImageScraper
+_target_: src.core.streetview-image-scraper.random_image_scraper.RandomImageScraper

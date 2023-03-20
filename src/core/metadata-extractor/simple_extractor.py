@@ -5,3 +5,5 @@ class SimpleMetadataExtractor(MetadataExtractor):
         metadata = {}
         return metadata
     
+    def __call__(self, *args, **kwargs):
+        return self.extract_metadata(kwargs.get("image"))

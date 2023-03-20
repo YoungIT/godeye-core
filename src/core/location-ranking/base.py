@@ -19,5 +19,19 @@ class LocationRanker:
         scores = self.compute_scores(imgs, ref_img)
         return scores
 
+    def __call__(self, *args, **kwargs):
+        """Run and return output"""
+        scores = []
+        for candidate in kwargs.get("image_candidates"):
+            score = sum(self.get_scores(
+                candidate.get("images"),
+                kwargs.get("image")
+            ))
+            scores.append([
+                candidate.get("coord"),
+                score
+            ])
+        return scores
+
     def __str__(self):
         return f"Location Ranker"
