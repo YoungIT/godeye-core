@@ -39,7 +39,7 @@ def main(cfg: DictConfig):
     }
     for module in pipeline:
         output = module(**output)
-        print(module, output)
+        logger.info(f"{module}: {output}")
     return output
 
 if __name__ == "__main__":
