@@ -19,5 +19,11 @@ class StreetViewImageScraper:
         imgs = self.scrape_images(coordinates)
         return imgs
 
+    def __call__(self, *args, **kwargs):
+        """Run and return output"""
+        return self.get_scraped_images(
+            kwargs.get("coordinates")
+        )
+
     def __str__(self):
         return f"Street View Image Scraper"

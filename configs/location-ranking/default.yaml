@@ -1,1 +1,1 @@
-_target_: location-ranking.base.LocationRanker
+_target_: src.core.location-ranking.random_location_ranker.RandomLocationnRanker

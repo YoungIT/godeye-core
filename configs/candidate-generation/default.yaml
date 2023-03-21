@@ -1,4 +1,4 @@
-_target_: candidate-generation.simple_generator.RandomCandidateGenerator
+_target_: src.core.candidate-generation.simple_generator.RandomCandidateGenerator
 
-map_grids: null
-num_candidates: 20
+map_grids: [0,1,2,3]
+num_candidates: 2
