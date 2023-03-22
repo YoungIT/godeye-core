@@ -22,16 +22,19 @@ class LocationRanker:
     def __call__(self, *args, **kwargs):
         """Run and return output"""
         scores = []
-        for candidate in kwargs.get("image_candidates"):
+        coordinates = kwargs.get("coordinates")
+        for idx, image_candidate in enumerate(kwargs.get("image_candidates")):
+            coord = coordinates[idx]
             score = sum(self.get_scores(
-                candidate.get("images"),
+                image_candidate,
                 kwargs.get("image")
             ))
             scores.append([
-                candidate.get("coord"),
+                coord,
                 score
             ])
-        return scores
-
+        return {
+            "scores": scores,
+        }
     def __str__(self):
         return f"Location Ranker"

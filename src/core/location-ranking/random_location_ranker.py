@@ -1,8 +1,8 @@
 from .base import LocationRanker
 
-class RandomLocationnRanker(LocationRanker):
+class RandomLocationRanker(LocationRanker):
     def compute_scores(self, imgs, ref_img):
         scores = []
         for img in imgs:
-            scores.append(1.)
+            scores.append(10.)
         return scores

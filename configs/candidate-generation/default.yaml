@@ -1,4 +1,0 @@
-_target_: src.core.candidate-generation.simple_generator.RandomCandidateGenerator
-
-map_grids: [0,1,2,3]
-num_candidates: 2

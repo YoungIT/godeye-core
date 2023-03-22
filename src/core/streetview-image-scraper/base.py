@@ -10,19 +10,19 @@ class StreetViewImageScraper:
         """
         raise NotImplementedError("Subclasses should implement this method.")
 
-    def get_scraped_images(self, coordinates):
+    def get_scraped_images(self, **kwargs):
         """
         Get the scraped images.
 
         :return: A list of images corresponding to the input coordinates.
         """
-        imgs = self.scrape_images(coordinates)
+        imgs = self.scrape_images(**kwargs)
         return imgs
 
     def __call__(self, *args, **kwargs):
         """Run and return output"""
         return self.get_scraped_images(
-            kwargs.get("coordinates")
+            **kwargs,
         )
 
     def __str__(self):

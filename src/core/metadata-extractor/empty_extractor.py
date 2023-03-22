@@ -1,8 +1,10 @@
 from .base import MetadataExtractor
 
-class SimpleMetadataExtractor(MetadataExtractor):
+class EmptyMetadataExtractor(MetadataExtractor):
     def extract_metadata(self, image):
-        metadata = {}
+        metadata = {
+            "image": image
+        }
         return metadata
     
     def __call__(self, *args, **kwargs):
