@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
 
 class GridCell:
-    def __init__(self, name, obj = None):
+    def __init__(self, name):
         self.name = name
-        self.obj = obj

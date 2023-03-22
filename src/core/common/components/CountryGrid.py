@@ -9,6 +9,5 @@ class CountryGrid(Grid):
             self.add_class(
                 GridCell(
                     name=country.value,
-                    obj=country
                 )
             )
