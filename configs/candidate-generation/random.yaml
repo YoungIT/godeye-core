@@ -1,0 +1,4 @@
+_target_: src.core.candidate-generation.random_generator.RandomCandidateGenerator
+map_grids:
+  _target_: src.core.common.components.CountryGrid.CountryGrid
+num_candidates: 2

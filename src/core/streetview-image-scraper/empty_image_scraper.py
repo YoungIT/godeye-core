@@ -1,11 +1,14 @@
 from .base import StreetViewImageScraper
 
-class RandomImageScraper(StreetViewImageScraper):
+"""
+noop class
+"""
+class EmptyImageScraper(StreetViewImageScraper):
     def scrape_images(self, **kwargs):
         return {
             "coordinates": kwargs.get("coordinates"),
             "image_candidates": [
-                ["assets/london.jpeg", "assets/paris.jpeg", "assets/rome.jpeg"]
+                []
                 for coord in kwargs.get("coordinates")
             ],
             "image": kwargs.get("image"),
