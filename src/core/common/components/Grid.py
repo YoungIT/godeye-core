@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+from loguru import logger
 class Grid:
     def __init__(self, preload=True):
         self.cells = {}
@@ -22,3 +22,7 @@ class Grid:
 
     def get_cells(self):
         return list(self.cells.values())
+    
+    def get_cell_names(self):
+        for idx, grid_cell in self.cells.items():
+            logger.info(f"{idx} - {grid_cell.name}")

@@ -49,7 +49,7 @@ def main(cfg: DictConfig):
             output = module(output)
         else:
             output = module(**output)
-        print(module, output)
+        # print(module, output)
     return output
 
 if __name__ == "__main__":
