@@ -1,4 +1,5 @@
 _target_: src.core.candidate-generation.streetclip_country_generator.StreetClipCountryCandidateGenerator
 map_grids:
   _target_: src.core.common.components.CountryGrid.CountryGrid
-num_candidates: -1
+num_candidates: 10
+model_name: "geolocal/StreetCLIP"

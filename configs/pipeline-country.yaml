@@ -5,4 +5,4 @@ defaults:
   - location-ranking: random.yaml
   - metadata-extractor: empty.yaml 
   - streetview-image-scraper: empty.yaml
-img: assets/paris.jpeg
+img: assets/imgs/london.jpeg
