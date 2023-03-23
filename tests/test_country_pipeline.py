@@ -15,8 +15,8 @@ def test_country_pipeline():
         cfg = compose(config_name="pipeline-country.yaml", overrides=[])
         for img in [
             "assets/imgs/london.jpeg",
-            # "assets/imgs/paris.jpeg",
-            # "assets/imgs/rome.jpeg",
+            "assets/imgs/paris.jpeg",
+            "assets/imgs/rome.jpeg",
         ]:
             with open_dict(cfg):
                 cfg.img = img
