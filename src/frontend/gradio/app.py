@@ -14,21 +14,22 @@ from src.core.core import init_pipeline
 base_path = pyrootutils.find_root(search_from=__file__, indicator=[".git", "setup.cfg"])
 
 def filter_map(demo_image_input):
-    print(demo_image_input)
-    output = {
-        "image": demo_image_input
-    }
-    for module in pipeline:
-        if type(output) != dict:
-            output = module(output)
-        else:
-            output = module(**output)
-        # print(module, output)
+    lat, lon = 40.67, -73.90
+    if(demo_image_input is not None):
+        output = {
+            "image": demo_image_input
+        }
+        for module in pipeline:
+            if type(output) != dict:
+                output = module(output)
+            else:
+                output = module(**output)
+            # print(module, output)
 
-    coords = output["scores"][0][0]
+        coords = output["scores"][0][0]
 
-    lat = coords[0]
-    lon = coords[1]
+        lat = coords[0]
+        lon = coords[1]
 
     fig = go.Figure(go.Scattermapbox(
         lat=[f'{lat}'],
