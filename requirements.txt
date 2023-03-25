@@ -5,6 +5,10 @@ pytest==7.2.2
 geopy==2.3.0
 pyrootutils==1.0.4
 
+# front end gradio demo
+gradio==3.23.0
+plotly==5.13.1
+
 # streetclip lib
 torch==2.0.0
 torchvision==0.15.1
