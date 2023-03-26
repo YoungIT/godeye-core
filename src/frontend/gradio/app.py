@@ -14,28 +14,29 @@ from src.core.core import init_pipeline
 base_path = pyrootutils.find_root(search_from=__file__, indicator=[".git", "setup.cfg"])
 
 def filter_map(demo_image_input):
-    print(demo_image_input)
-    output = {
-        "image": demo_image_input
-    }
-    for module in pipeline:
-        if type(output) != dict:
-            output = module(output)
-        else:
-            output = module(**output)
-        # print(module, output)
+    lat, lon = 40.67, -73.90
+    if(demo_image_input is not None):
+        output = {
+            "image": demo_image_input
+        }
+        for module in pipeline:
+            if type(output) != dict:
+                output = module(output)
+            else:
+                output = module(**output)
+            # print(module, output)
 
-    coords = output["scores"][0][0]
+        coords = output["scores"][0][0]
 
-    lat = coords[0]
-    lon = coords[1]
+        lat = coords[0]
+        lon = coords[1]
 
     fig = go.Figure(go.Scattermapbox(
         lat=[f'{lat}'],
         lon=[f'{lon}'],
         mode='markers',
         marker=go.scattermapbox.Marker(
-            size=40
+            size=25
         ),
         text=['LMAO'],
     ))
@@ -58,7 +59,7 @@ def filter_map(demo_image_input):
 
 # if __name__ == "__main__":
 with initialize(version_base="1.1", config_path="../../../configs"):
-    cfg = compose(config_name="pipeline-country.yaml", overrides=[])
+    cfg = compose(config_name="pipeline-city.yaml", overrides=[])
     pipeline = init_pipeline(cfg)
 
     with gr.Blocks() as demo:
