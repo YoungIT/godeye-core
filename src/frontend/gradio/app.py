@@ -36,7 +36,7 @@ def filter_map(demo_image_input):
         lon=[f'{lon}'],
         mode='markers',
         marker=go.scattermapbox.Marker(
-            size=40
+            size=25
         ),
         text=['LMAO'],
     ))
@@ -59,7 +59,7 @@ def filter_map(demo_image_input):
 
 # if __name__ == "__main__":
 with initialize(version_base="1.1", config_path="../../../configs"):
-    cfg = compose(config_name="pipeline-country.yaml", overrides=[])
+    cfg = compose(config_name="pipeline-city.yaml", overrides=[])
     pipeline = init_pipeline(cfg)
 
     with gr.Blocks() as demo:
