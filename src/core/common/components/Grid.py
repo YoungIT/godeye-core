@@ -25,4 +25,4 @@ class Grid:
     
     def get_cell_names(self):
         for idx, grid_cell in self.cells.items():
-            logger.info(f"{idx} - {grid_cell.name}")
+            logger.debug(f"{idx} - {grid_cell.name}")
