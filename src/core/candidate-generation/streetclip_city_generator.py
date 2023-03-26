@@ -34,8 +34,10 @@ class StreetClipCityCandidateGenerator(StreetClipCountryCandidateGenerator):
         city_cells = country_cell.childs
         cities_name = [c.name for c in city_cells]
 
+        if(not cities_name):
+            raise ValueError(f"Not supported city-level for country {country_cell.name}")
+        
         candidate_idxs = self.generator(image, cities_name, num_candidates=self.num_candidates)
-
         for idx in candidate_idxs:
             result_grid_candidate.add_class(
                 GridCell(name=cities_name[idx])
