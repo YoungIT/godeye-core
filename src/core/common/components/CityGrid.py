@@ -1,12 +1,12 @@
 from .Grid import Grid
-from ..location.COUNTRY import Country
+from ..location.CITY import City
 from .GridCell import GridCell
 
-class CountryGrid(Grid):
+class CityGrid(Grid):
     def load_cell_info(self):
-        for country in Country:
+        for city in City:
             self.add_class(
                 GridCell(
-                    name=country.value,
+                    name=city.value,
                 )
             )

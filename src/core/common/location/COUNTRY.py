@@ -94,3 +94,4 @@ class Country(Enum):
     UnitedKingdom: str = "United Kingdom"
     UnitedStates: str = "United States"
     Uruguay: str = "Uruguay"
+    Vietnam: str = "Vietnam"
