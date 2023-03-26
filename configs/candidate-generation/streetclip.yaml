@@ -3,3 +3,5 @@ map_grids:
   _target_: src.core.common.components.CountryGrid.CountryGrid
 num_candidates: 10
 model_name: "geolocal/StreetCLIP"
+
+use_torch_compiled: False

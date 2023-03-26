@@ -1,0 +1,14 @@
+defaults:
+  - candidate-generation: streetclip.yaml
+  - geo-estimation: city-to-coord.yaml
+  - location-ranking: random.yaml
+  - metadata-extractor: empty.yaml 
+  - streetview-image-scraper: empty.yaml
+  - _self_
+
+candidate-generation:
+  _target_: src.core.candidate-generation.streetclip_city_generator.StreetClipCityCandidateGenerator
+  map_grids:
+    _target_: src.core.common.components.CountryCityGrid.CountryCityGrid
+
+img: assets/imgs/london.jpeg
