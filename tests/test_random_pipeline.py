@@ -7,9 +7,9 @@ def test_pipeline():
     with initialize(version_base="1.1", config_path="../configs"):
         cfg = compose(config_name="pipeline-random.yaml", overrides=[])
         for img in [
-            "assets/london.jpeg",
-            "assets/paris.jpeg",
-            "assets/rome.jpeg",
+            "assets/imgs/london.jpeg",
+            "assets/imgs/paris.jpeg",
+            "assets/imgs/rome.jpeg",
         ]:
             with open_dict(cfg):
                 cfg.img = img

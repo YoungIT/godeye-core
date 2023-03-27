@@ -5,7 +5,7 @@ class RandomImageScraper(StreetViewImageScraper):
         return {
             "coordinates": kwargs.get("coordinates"),
             "image_candidates": [
-                ["assets/london.jpeg", "assets/paris.jpeg", "assets/rome.jpeg"]
+                ["assets/imgs/london.jpeg", "assets/imgs/paris.jpeg", "assets/imgs/rome.jpeg"]
                 for coord in kwargs.get("coordinates")
             ],
             "image": kwargs.get("image"),
