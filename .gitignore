@@ -6,3 +6,5 @@ notebooks/
 *.egg-info/
 
 resources/tibhannover/models/**.ckpt
+
+.DS_Store
