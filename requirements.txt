@@ -13,3 +13,9 @@ plotly==5.13.1
 torch==2.0.0
 torchvision==0.15.1
 transformers==4.27.2
+
+# tib hannover geoestimator
+pytorch-lightning==1.0.1
+s2sphere==0.2.5
+msgpack==1.0.5
+torchvision==0.15.1
