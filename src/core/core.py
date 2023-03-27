@@ -42,7 +42,7 @@ def main(cfg: DictConfig):
     logger.info(f"\nConfigs: \n {OmegaConf.to_yaml(cfg)}")
     pipeline = init_pipeline(cfg)
     output = {
-        "image": np.array(Image.open(os.path.join(base_path, cfg.img)))
+        "image": Image.open(os.path.join(base_path, cfg.img)).convert("RGB")
     }
     for module in pipeline:
         if type(output) != dict:
