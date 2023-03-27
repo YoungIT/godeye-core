@@ -4,3 +4,5 @@ outputs/
 notebooks/
 
 *.egg-info/
+
+resources/tibhannover/models/**.ckpt
