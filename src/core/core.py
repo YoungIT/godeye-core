@@ -37,19 +37,19 @@ def init_pipeline(cfg: DictConfig):
     
     return pipeline
 
-@hydra.main(config_path="../../configs", config_name="pipeline-country.yaml", version_base="1.1")
+@hydra.main(config_path="../../configs", config_name="pipeline-tibhannover.yaml", version_base="1.1")
 def main(cfg: DictConfig):
     logger.info(f"\nConfigs: \n {OmegaConf.to_yaml(cfg)}")
     pipeline = init_pipeline(cfg)
     output = {
-        "image": np.array(Image.open(os.path.join(base_path, cfg.img)))
+        "image": Image.open(os.path.join(base_path, cfg.img)).convert("RGB")
     }
     for module in pipeline:
         if type(output) != dict:
             output = module(output)
         else:
             output = module(**output)
-        # print(module, output)
+        print(module, output)
     return output
 
 if __name__ == "__main__":

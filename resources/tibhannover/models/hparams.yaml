@@ -1,0 +1,31 @@
+arch: resnet50
+batch_size: 128
+key_img_encoded: image
+key_img_id: id
+num_workers_per_loader: 6
+optim:
+  params:
+    lr: 0.01
+    momentum: 0.9
+    weight_decay: 0.0001
+partitionings:
+  files:
+  - /Users/tungch/workspace/yitec/godeye-core/resources/tibhannover/s2_cells/cells_50_5000.csv
+  - /Users/tungch/workspace/yitec/godeye-core/resources/tibhannover/s2_cells/cells_50_2000.csv
+  - /Users/tungch/workspace/yitec/godeye-core/resources/tibhannover/s2_cells/cells_50_1000.csv
+  ptype: default
+  shortnames:
+  - coarse
+  - middle
+  - fine
+scheduler:
+  params:
+    gamma: 0.5
+    milestones:
+    - 4
+    - 8
+    - 12
+    - 13
+    - 14
+    - 15
+weights: null

@@ -15,8 +15,14 @@ class RandomCandidateGenerator(CandidateGenerator):
             GridCell(name=Country.Canada.value)
         )
 
-        return CandidateGenerationOutput(
-            image=image,
-            grid_candidates=result_grid_candidate,
-            metadata=metadata
-        )
+        return {
+            "image": image,
+            "grid_candidates": result_grid_candidate,
+            "metadata": metadata
+        }
+
+        # return CandidateGenerationOutput(
+        #     image=image,
+        #     grid_candidates=result_grid_candidate,
+        #     metadata=metadata
+        # )

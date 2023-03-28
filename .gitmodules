@@ -1,0 +1,3 @@
+[submodule "src/core/lib/GeoEstimation"]
+	path = src/core/lib/GeoEstimation
+	url = https://github.com/CaoHoangTung/GeoEstimation
