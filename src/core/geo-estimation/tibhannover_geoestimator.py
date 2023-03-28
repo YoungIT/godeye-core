@@ -29,6 +29,7 @@ class TIBHannoverEstimator(GeolocationEstimator):
             hparams_file=tib_hparams,
             map_location=None,
         )
+        self.model.eval()
         self.use_country_grid_candidates = use_country_grid_candidates
         self.device = device
         
@@ -40,33 +41,14 @@ class TIBHannoverEstimator(GeolocationEstimator):
                 ),
             ]
         )
-        # self.tfm = torchvision.transforms.Compose(
-        #     [
-        #         torchvision.transforms.Normalize(
-        #             (0.485, 0.456, 0.406), (0.229, 0.224, 0.225)
-        #         ),
-        #     ]
-        # )
-
-    # def preprocess_image(self, image):
-    #     # image = Image.open(img_path).convert("RGB")
-    #     image = torchvision.transforms.Resize(256)(image)
-    #     crops = torchvision.transforms.FiveCrop(224)(image)
-    #     crops_transformed = []
-    #     for crop in crops:
-    #         crops_transformed.append(tfm(crop))
-    
-    #     return torch.stack(crops_transformed, dim=0)
 
     def preprocess_image(self, img_path):
         image = Image.open(img_path).convert("RGB")
         image = torchvision.transforms.Resize(256)(image)
-        import IPython ; IPython.embed()
         crops = torchvision.transforms.FiveCrop(224)(image)
         crops_transformed = []
         for crop in crops:
             crops_transformed.append(self.tfm(crop))
-        import IPython ; IPython.embed()
     
         return torch.stack(crops_transformed, dim=0)
 
@@ -76,20 +58,10 @@ class TIBHannoverEstimator(GeolocationEstimator):
         grid_candidates: CountryGrid, 
         metadata: dict = {}
     ):
-        # Change shape from h x w x c to c x h x w
-        # image = np.swapaxes(image, 0, 2)
-        # image = np.swapaxes(image, 1, 2)
-        # image = torch.tensor(image).to(self.device).float()
         image = self.preprocess_image("/Users/tungch/workspace/yitec/godeye-core/assets/imgs/london.jpeg")
 
         X = [image.unsqueeze(0), {"img_path": "test"}]
         img_paths, pred_classes, pred_latitudes, pred_longitudes = self.model.inference(X)
-
-        import IPython ; IPython.embed()
-        
-        # Add extra batch dim
-        # image = image.unsqueeze(0).float()
-        # import IPython ; IPython.embed()
 
         # Output contains 3 items, corresponding to different resolution
         output = self.model(image)
