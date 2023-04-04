@@ -7,7 +7,7 @@ defaults:
   - _self_
 
 candidate-generation:
-  _target_: src.core.candidate-generation.streetclip_city_generator.StreetClipCityCandidateGenerator
+  _target_: src.core.candidate_generation.streetclip_city_generator.StreetClipCityCandidateGenerator
   map_grids:
     _target_: src.core.common.components.CountryCityGrid.CountryCityGrid
 

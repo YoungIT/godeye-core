@@ -1,1 +1,1 @@
-_target_: src.core.geo-estimation.country_geoestimator.CountryToCoordEstimator
+_target_: src.core.geo_estimation.country_geoestimator.CountryToCoordEstimator

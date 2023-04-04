@@ -1,1 +1,1 @@
-_target_: src.core.streetview-image-scraper.empty_image_scraper.EmptyImageScraper
+_target_: src.core.streetview_image_scraper.empty_image_scraper.EmptyImageScraper

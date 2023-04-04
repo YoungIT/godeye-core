@@ -1,1 +1,1 @@
-_target_: src.core.metadata-extractor.empty_extractor.EmptyMetadataExtractor
+_target_: src.core.metadata_extractor.empty_extractor.EmptyMetadataExtractor

@@ -1,4 +1,4 @@
-_target_: src.core.candidate-generation.identity_generator.IdentityCandidateGenerator
+_target_: src.core.candidate_generation.identity_generator.IdentityCandidateGenerator
 map_grids:
   _target_: src.core.common.components.CountryGrid.CountryGrid
 num_candidates: -1
