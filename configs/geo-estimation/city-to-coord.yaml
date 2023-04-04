@@ -1,1 +1,1 @@
-_target_: src.core.geo-estimation.city_geoestimator.CityToCoordEstimator
+_target_: src.core.geo_estimation.city_geoestimator.CityToCoordEstimator
