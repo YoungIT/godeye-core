@@ -1,1 +1,1 @@
-_target_: src.core.geo-estimation.tibhannover_geoestimator.TIBHannoverEstimator
+_target_: src.core.geo_estimation.tibhannover_geoestimator.TIBHannoverEstimator
