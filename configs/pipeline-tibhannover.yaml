@@ -3,6 +3,6 @@ defaults:
   - candidate-generation: streetclip.yaml
   - geo-estimation: tibhannover.yaml
   - location-ranking: random.yaml
-  - metadata-extractor: empty.yaml 
+  - metadata-extractor: exif.yaml 
   - streetview-image-scraper: empty.yaml
 img: assets/imgs/london.jpeg
