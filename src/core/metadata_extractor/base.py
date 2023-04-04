@@ -19,7 +19,11 @@ class MetadataExtractor:
 
     def __call__(self, *args, **kwargs):
         """Run and return output"""
-        raise NotImplementedError("Subclasses should implement this method.")
+        image = kwargs.get("image").copy()
+        return {
+            "image": image,
+            "metadata": self.extract_metadata(image)
+        }
 
     def __str__(self):
         return f"Metadata Extractor"
