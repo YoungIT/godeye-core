@@ -27,7 +27,7 @@ class LocationRanker:
             coord = coordinates[idx]
             score = sum(self.get_scores(
                 image_candidate,
-                kwargs.get("image")
+                kwargs.get("image").copy()
             ))
             scores.append([
                 coord,

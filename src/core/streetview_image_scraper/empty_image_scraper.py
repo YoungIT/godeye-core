@@ -11,6 +11,6 @@ class EmptyImageScraper(StreetViewImageScraper):
                 []
                 for coord in kwargs.get("coordinates")
             ],
-            "image": kwargs.get("image"),
+            "image": kwargs.get("image").copy(),
             "countries": kwargs.get("countries")
         }

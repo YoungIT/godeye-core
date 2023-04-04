@@ -38,7 +38,7 @@ class CandidateGenerator:
 
     def __call__(self, *args, **kwargs):
         return self.generate_candidates(
-            kwargs.get("image"), 
+            kwargs.get("image").copy(), 
             kwargs.get("metadata")
         )
 

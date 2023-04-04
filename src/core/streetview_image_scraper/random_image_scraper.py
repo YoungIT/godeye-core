@@ -8,6 +8,6 @@ class RandomImageScraper(StreetViewImageScraper):
                 ["assets/imgs/london.jpeg", "assets/imgs/paris.jpeg", "assets/imgs/rome.jpeg"]
                 for coord in kwargs.get("coordinates")
             ],
-            "image": kwargs.get("image"),
+            "image": kwargs.get("image").copy(),
             "countries": kwargs.get("countries")
         }

@@ -8,4 +8,4 @@ class EmptyMetadataExtractor(MetadataExtractor):
         return metadata
     
     def __call__(self, *args, **kwargs):
-        return self.extract_metadata(kwargs.get("image"))
+        return self.extract_metadata(kwargs.get("image").copy())

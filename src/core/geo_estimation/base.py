@@ -20,7 +20,7 @@ class GeolocationEstimator:
         return grids
 
     def __call__(self, *args, **kwargs):
-        return self.get_coordinates(kwargs.get("image"), kwargs.get("grid_candidates"), metadata=kwargs.get("metadata"))
+        return self.get_coordinates(kwargs.get("image").copy(), kwargs.get("grid_candidates"), metadata=kwargs.get("metadata"))
 
     def __str__(self):
         return f"Geolocation Estimator"
