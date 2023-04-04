@@ -15,6 +15,8 @@ base_path = pyrootutils.find_root(search_from=__file__, indicator=[".git", "setu
 
 def filter_map(demo_image_input):
     lat, lon = 40.67, -73.90
+    coords = [[40.67, -73.90]]
+
     if(demo_image_input is not None):
         output = {
             "image": demo_image_input
@@ -26,14 +28,12 @@ def filter_map(demo_image_input):
                 output = module(**output)
             # print(module, output)
 
-        coords = output["scores"][0][0]
-
-        lat = coords[0]
-        lon = coords[1]
+        coords = output["scores"]
+        lat, lon = coords[0][0][0], coords[0][0][1]
 
     fig = go.Figure(go.Scattermapbox(
-        lat=[f'{lat}'],
-        lon=[f'{lon}'],
+        lat=[f'{coord[0][0]}' for coord in coords],
+        lon=[f'{coord[0][1]}' for coord in coords],
         mode='markers',
         marker=go.scattermapbox.Marker(
             size=25
@@ -59,11 +59,11 @@ def filter_map(demo_image_input):
 
 # if __name__ == "__main__":
 with initialize(version_base="1.1", config_path="../../../configs"):
-    cfg = compose(config_name="pipeline-city.yaml", overrides=[])
+    cfg = compose(config_name="pipeline-tibhannover.yaml", overrides=[])
     pipeline = init_pipeline(cfg)
 
     with gr.Blocks() as demo:
-        demo_image_input = gr.Image(label="Input image", image_mode="RGB", type="numpy")
+        demo_image_input = gr.Image(label="Input image", image_mode="RGB", type="pil")
 
         btn = gr.Button(value="Get location")
         map = gr.Plot()

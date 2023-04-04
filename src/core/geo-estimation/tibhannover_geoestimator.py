@@ -42,8 +42,11 @@ class TIBHannoverEstimator(GeolocationEstimator):
             ]
         )
 
-    def preprocess_image(self, img_path):
-        image = Image.open(img_path).convert("RGB")
+    def preprocess_image(self, img):
+        if(isinstance(img, str)):
+            image = Image.open(img).convert("RGB")
+        else:
+            image = img
         image = torchvision.transforms.Resize(256)(image)
         crops = torchvision.transforms.FiveCrop(224)(image)
         crops_transformed = []
@@ -54,11 +57,11 @@ class TIBHannoverEstimator(GeolocationEstimator):
 
     def estimate_geolocation(
         self, 
-        image: np.array, 
+        image: Image, 
         grid_candidates: CountryGrid, 
         metadata: dict = {}
     ):
-        image = self.preprocess_image("/Users/tungch/workspace/yitec/godeye-core/assets/imgs/london.jpeg")
+        image = self.preprocess_image(image)
 
         X = [image.unsqueeze(0), {"img_path": "test"}]
         img_paths, pred_classes, pred_latitudes, pred_longitudes = self.model.inference(X)
@@ -78,11 +81,13 @@ class TIBHannoverEstimator(GeolocationEstimator):
                 lat, lng = partition.get_lat_lng(cls_id)
                 coords.append((lat, lng))
 
+        print(coords)
+
         countries = grid_candidates.get_cells()
         print("Country list", [c.name for c in countries])
 
         return {
-            "image": image,
+            "image": image, 
             "grid_candidates": grid_candidates,
             "coordinates": coords,
             # "countries": countries

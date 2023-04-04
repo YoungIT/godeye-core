@@ -44,12 +44,13 @@ def main(cfg: DictConfig):
     output = {
         "image": Image.open(os.path.join(base_path, cfg.img)).convert("RGB")
     }
+
     for module in pipeline:
         if type(output) != dict:
             output = module(output)
         else:
             output = module(**output)
-        print(module, output)
+        # print(module, output)
     return output
 
 if __name__ == "__main__":
