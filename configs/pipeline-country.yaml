@@ -4,5 +4,4 @@ defaults:
   - geo-estimation: country-to-coord.yaml
   - location-ranking: random.yaml
   - metadata-extractor: empty.yaml 
-  - streetview-image-scraper: empty.yaml
 img: assets/imgs/london.jpeg
