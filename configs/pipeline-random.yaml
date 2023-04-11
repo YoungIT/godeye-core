@@ -4,5 +4,4 @@ defaults:
   - geo-estimation: random.yaml
   - location-ranking: random.yaml
   - metadata-extractor: empty.yaml 
-  - streetview-image-scraper: random.yaml
 img: assets/paris.jpeg

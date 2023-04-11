@@ -3,7 +3,6 @@ defaults:
   - geo-estimation: city-to-coord.yaml
   - location-ranking: random.yaml
   - metadata-extractor: empty.yaml 
-  - streetview-image-scraper: empty.yaml
   - _self_
 
 candidate-generation:
