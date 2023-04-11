@@ -8,3 +8,14 @@ notebooks/
 resources/tibhannover/models/**.ckpt
 
 .DS_Store
+
+# ignore nominatim map files
+*.pbf
+nominatim-data/
+
+# ignore nominatim local
+Nominatim/
+
+# ignore google landmark dataset
+assets/data/
+assets/imgs/google-landmark/
