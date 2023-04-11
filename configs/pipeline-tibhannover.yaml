@@ -4,5 +4,8 @@ defaults:
   - geo-estimation: tibhannover.yaml
   - location-ranking: random.yaml
   - metadata-extractor: exif.yaml 
-  - streetview-image-scraper: empty.yaml
 img: assets/imgs/london.jpeg
+
+# test google landmark
+google_landmark_data: assets/data/google-landmark/img2landmark_latlng.csv
+google_landmark_images: assets/imgs/google-landmark

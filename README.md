@@ -9,8 +9,8 @@ Download pretrained model
 ```
 cd src/core/lib/GeoEstimation
 mkdir -p tibhannover
-wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/epoch.014-val_loss.18.4833.ckpt -O models/base_M/epoch=014-val_loss=18.4833.ckpt
-wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/hparams.yaml -O models/base_M/hparams.yaml
+wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/epoch.014-val_loss.18.4833.ckpt -O resources/tibhannover/models/epoch=014-val_loss=18.4833.ckpt
+wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/hparams.yaml -O resources/tibhannover/models/hparams.yaml
 ```
 
 Download grid data & model
