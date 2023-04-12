@@ -22,13 +22,12 @@ class CountryCityGrid(Grid):
     def load_cell_info(self):
         country_group = self.get_country_group()
 
-        print(country_group.keys())
-
         for country in Country:
-            cities = country_group[country.value]
+            cities = country_group[country.value.name]
             self.add_class(
                 GridCell(
-                    name=country.value,
+                    name=country.value.name,
+                    repr_cls=country.value,
                     childs=[GridCell(name=city) for city in cities]
                 )
             )

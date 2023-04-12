@@ -1,10 +1,12 @@
 from typing import Tuple
 
+import reverse_geocoder as rg
 from geopy.geocoders import Nominatim
 from src.core.common.location.COUNTRY import Country
-from src.core.common.utils.coord_converter import (CITY_CONVERTER,
-                                                   COUNTRY_CONVERTER,
-                                                   NOMINATIM_CONVERTER)
+from src.core.common.utils.converter import (CITY_CONVERTER,
+                                        COUNTRY_CONVERTER,
+                                        NOMINATIM_CONVERTER,
+                                        ALPHA2_TO_COUNTRY_NAME)
 
 def country_to_lat_long_geopy(country_name: str):
     location = NOMINATIM_CONVERTER.geocode(country_name)
@@ -24,6 +26,16 @@ def lat_long_to_place_geopy(coord: Tuple[float, float]):
     place = NOMINATIM_CONVERTER.reverse(coord)
     return place
 
+def lat_long_to_alpha2(coord: Tuple[float, float]) -> str:
+    """Convert (lat, lng) to alpha_2 code represent country"""
+    results = rg.search(coord) # default mode = 2
+    
+    alpha2 = None
+    if(len(results) > 0):
+        alpha2 = results[0]["cc"]
+
+    return alpha2
+        
 def country_to_lat_long_json(country_name: str):
     if(country_name in COUNTRY_CONVERTER):
         lat, lng = COUNTRY_CONVERTER[country_name]
@@ -43,4 +55,4 @@ if __name__ == "__main__":
     lat_lon = (location.latitude, location.longitude)
     print(lat_lon)
 
-    print(lat_long_to_place((21.0294498, 105.8544441)))
+    # print(lat_long_to_place((21.0294498, 105.8544441)))
