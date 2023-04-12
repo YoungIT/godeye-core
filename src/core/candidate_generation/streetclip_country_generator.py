@@ -26,7 +26,8 @@ class StreetClipCountryCandidateGenerator(CandidateGenerator):
         candidate_idxs = self.generator(image.copy(), countries_name, self.num_candidates)
         for idx in candidate_idxs:
             result_grid_candidate.add_class(
-                GridCell(name=countries_name[idx])
+                GridCell(name=countries_name[idx],
+                         repr_cls=self.countries[idx].repr_cls)
             )
         
         # DEBUG
