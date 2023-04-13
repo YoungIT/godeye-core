@@ -1,3 +1,4 @@
+from typing import List, Tuple
 from argparse import ArgumentParser
 from math import ceil
 from pathlib import Path
@@ -11,7 +12,7 @@ from PIL import Image
 
 import numpy as np
 from .base import GeolocationEstimator
-from src.core.common.utils.geography import country_to_lat_long_json
+from src.core.common.utils.geography import lat_long_to_alpha2
 from src.core.common.components.CountryGrid import CountryGrid
 from src.core.core import base_path
 
@@ -54,6 +55,30 @@ class TIBHannoverEstimator(GeolocationEstimator):
             crops_transformed.append(self.tfm(crop))
     
         return torch.stack(crops_transformed, dim=0)
+    
+    def filter_output(self, 
+                      coords_output: List[Tuple[float, float]], 
+                      grid_candidates: CountryGrid
+                      ):
+        """Filter list of coordinates based on grid candidate.
+        Remove all coordinates that not belong to Country candidate
+
+        Args:
+            coords_output (List[float, float]): List of lat, lng coord
+            grid_candidates (CountryGrid): Country grid candidate
+        """
+        # Note: select only one country for test only
+        candidate_country = grid_candidates.get_cells()[0]
+        print("Candidate country: ", candidate_country)
+
+        filter_coords = []
+        for coord in coords_output:
+            alpha2 = lat_long_to_alpha2(coord)
+
+            if(alpha2 == candidate_country.repr_cls.alpha_2):
+                filter_coords.append(coord)
+
+        return filter_coords                
 
     def estimate_geolocation(
         self, 
@@ -80,11 +105,9 @@ class TIBHannoverEstimator(GeolocationEstimator):
             for cls_id in cls_preds.tolist():
                 lat, lng = partition.get_lat_lng(cls_id)
                 coords.append((lat, lng))
-
-        print(coords)
-
-        countries = grid_candidates.get_cells()
-        print("Country list", [c.name for c in countries])
+        
+        # ASK: Whether or not using only country candidate with the highest probability only?
+        coords = self.filter_output(coords, grid_candidates)
 
         return {
             "image": image, 

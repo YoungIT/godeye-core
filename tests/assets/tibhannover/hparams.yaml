@@ -10,9 +10,9 @@ optim:
     weight_decay: 0.0001
 partitionings:
   files:
-  - ../../../resources/tibhannover/s2_cells/cells_50_5000.csv
-  - ../../../resources/tibhannover/s2_cells/cells_50_2000.csv
-  - ../../../resources/tibhannover/s2_cells/cells_50_1000.csv
+  - ./resources/tibhannover/s2_cells/cells_50_5000.csv
+  - ./resources/tibhannover/s2_cells/cells_50_2000.csv
+  - ./resources/tibhannover/s2_cells/cells_50_1000.csv
   ptype: default
   shortnames:
   - coarse

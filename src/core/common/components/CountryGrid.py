@@ -7,6 +7,7 @@ class CountryGrid(Grid):
         for country in Country:
             self.add_class(
                 GridCell(
-                    name=country.value,
+                    name=country.value.name,
+                    repr_cls=country.value
                 )
             )
