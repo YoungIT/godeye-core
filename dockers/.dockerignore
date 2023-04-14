@@ -1,9 +1,13 @@
+.env
+
 configs/
 src/
 notebooks/
+Nominatim/
 
 # ignore assets
 assets/data
 google-landmark/
 
-.env
+# ignore openstreetmap file
+*.pbf

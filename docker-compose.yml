@@ -7,6 +7,7 @@ services:
     volumes: 
       - ./src:/godeye/src
       - ./configs:/godeye/configs
+      - huggingface-cache:/root/.cache/huggingface # cache huggingface model in local 
     ports:
       - '7860:7860'
     command: bash -c "cd /godeye/src/frontend/gradio && gradio app.py"
@@ -23,12 +24,14 @@ services:
       - '6379:6379'
     command: redis-server --save 20 1 --loglevel warning
     volumes: 
-      - cache:/data
+      - redis-cache:/data
     networks:
       - godeye
 
 volumes:
-  cache:
+  redis-cache:
+    driver: local
+  huggingface-cache:
     driver: local
 
 networks:
