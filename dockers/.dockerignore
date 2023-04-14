@@ -1,0 +1,9 @@
+configs/
+src/
+notebooks/
+
+# ignore assets
+assets/data
+google-landmark/
+
+.env

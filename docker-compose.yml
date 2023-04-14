@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  godeye_core:
+    build:
+      context: .
+      dockerfile: ./dockers/core.Dockerfile
+    volumes: 
+      - ./src:/godeye/src
+      - ./configs:/godeye/configs
+    ports:
+      - '7860:7860'
+    command: bash -c "cd /godeye/src/frontend/gradio && gradio app.py"
+    networks:
+      - godeye
+    depends_on:
+      - godeye_db
+
+  godeye_db:
+    image: redis:6.2-alpine
+    container_name: godeye-redis
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning
+    volumes: 
+      - cache:/data
+    networks:
+      - godeye
+
+volumes:
+  cache:
+    driver: local
+
+networks:
+  godeye:
+    driver: bridge
