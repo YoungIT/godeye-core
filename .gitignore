@@ -8,6 +8,7 @@ notebooks/
 resources/tibhannover/models/**.ckpt
 
 .DS_Store
+.env
 
 # ignore nominatim map files
 *.pbf
