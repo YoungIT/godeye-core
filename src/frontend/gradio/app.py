@@ -71,4 +71,4 @@ with initialize(version_base="1.1", config_path="../../../configs"):
         demo.load(filter_map, [demo_image_input], map)
         btn.click(filter_map, [demo_image_input], map)
     
-    demo.launch()
+    demo.launch(server_name="0.0.0.0", share=True)
