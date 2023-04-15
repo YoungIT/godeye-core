@@ -21,13 +21,14 @@ def init_pipeline(cfg: DictConfig):
     logger.info(f"Instantiating candidate generation module <{cfg['geo-estimation']._target_}>")
     geo_estimator = hydra.utils.instantiate(cfg["geo-estimation"])
 
-    # logger.info(f"Instantiating candidate generation module <{cfg['location-ranking']._target_}>")
-    # loc_ranker = hydra.utils.instantiate(cfg["location-ranking"])
+    logger.info(f"Instantiating candidate generation module <{cfg['location-ranking']._target_}>")
+    loc_ranker = hydra.utils.instantiate(cfg["location-ranking"])
     
     pipeline = [
         metadata_extractor, 
         candidate_generator,
-        geo_estimator
+        geo_estimator,
+        loc_ranker
     ]
     
     return pipeline

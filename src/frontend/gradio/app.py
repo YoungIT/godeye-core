@@ -29,11 +29,11 @@ def filter_map(demo_image_input):
             # print(module, output)
 
         coords = output["scores"]
-        lat, lon = coords[0][0][0], coords[0][0][1]
+        lat, lon = coords[0][0], coords[0][1]
 
     fig = go.Figure(go.Scattermapbox(
-        lat=[f'{coord[0][0]}' for coord in coords],
-        lon=[f'{coord[0][1]}' for coord in coords],
+        lat=[f'{coord[0]}' for coord in coords],
+        lon=[f'{coord[1]}' for coord in coords],
         mode='markers',
         marker=go.scattermapbox.Marker(
             size=25
