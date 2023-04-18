@@ -78,6 +78,9 @@ class TIBHannoverEstimator(GeolocationEstimator):
             if(alpha2 == candidate_country.repr_cls.alpha_2):
                 filter_coords.append(coord)
 
+        if(len(filter_coords) == 0): # check if tib geoestimation output not in streetclip pred country
+            return [coords_output[0]] # at least return a coordinates 
+            
         return filter_coords                
 
     def estimate_geolocation(
