@@ -28,7 +28,7 @@ def filter_map(demo_image_input):
                 output = module(**output)
             # print(module, output)
 
-        coords = output["scores"]
+        coords = output["coordinates"]
         lat, lon = coords[0][0], coords[0][1]
 
     fig = go.Figure(go.Scattermapbox(
