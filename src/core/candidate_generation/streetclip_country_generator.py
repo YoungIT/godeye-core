@@ -1,4 +1,6 @@
 from typing import List
+import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false" # remove warning
 
 from .base import CandidateGenerator
 from .models.streetclip import StreetClipGenerator
