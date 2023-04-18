@@ -5,6 +5,7 @@ from pathlib import Path
 import torch
 import pytorch_lightning as pl
 import pandas as pd
+from loguru import logger
 import torchvision
 from src.core.lib.GeoEstimation.classification.train_base import MultiPartitioningClassifier
 from src.core.lib.GeoEstimation.classification.dataset import FiveCropImageDataset
@@ -69,7 +70,6 @@ class TIBHannoverEstimator(GeolocationEstimator):
         """
         # Note: select only one country for test only
         candidate_country = grid_candidates.get_cells()[0]
-        print("Candidate country: ", candidate_country)
 
         filter_coords = []
         for coord in coords_output:
@@ -78,6 +78,9 @@ class TIBHannoverEstimator(GeolocationEstimator):
             if(alpha2 == candidate_country.repr_cls.alpha_2):
                 filter_coords.append(coord)
 
+        if(len(filter_coords) == 0): # check if tib geoestimation output not in streetclip pred country
+            return [coords_output[0]] # at least return a coordinates 
+            
         return filter_coords                
 
     def estimate_geolocation(
@@ -108,6 +111,7 @@ class TIBHannoverEstimator(GeolocationEstimator):
         
         # ASK: Whether or not using only country candidate with the highest probability only?
         coords = self.filter_output(coords, grid_candidates)
+        logger.debug(coords)
 
         return {
             "image": image, 
