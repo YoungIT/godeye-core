@@ -32,7 +32,7 @@ def init_pipeline(cfg: DictConfig):
     
     return pipeline
 
-@hydra.main(config_path="../../configs", config_name="pipeline-tibhannover.yaml", version_base="1.1")
+@hydra.main(config_path="../../configs", config_name="pipeline-city.yaml", version_base="1.1")
 def main(cfg: DictConfig):
     logger.info(f"\nConfigs: \n {OmegaConf.to_yaml(cfg)}")
     pipeline = init_pipeline(cfg)
@@ -46,6 +46,7 @@ def main(cfg: DictConfig):
         else:
             output = module(**output)
         # print(module, output)
+    print(output)
     return output
 
 if __name__ == "__main__":
