@@ -61,12 +61,10 @@ class TIBHannoverEstimator(GeolocationEstimator):
     def preprocess_image(self, img_path):
         image = Image.open(img_path).convert("RGB")
         image = torchvision.transforms.Resize(256)(image)
-        import IPython ; IPython.embed()
         crops = torchvision.transforms.FiveCrop(224)(image)
         crops_transformed = []
         for crop in crops:
             crops_transformed.append(self.tfm(crop))
-        import IPython ; IPython.embed()
     
         return torch.stack(crops_transformed, dim=0)
 
@@ -80,7 +78,7 @@ class TIBHannoverEstimator(GeolocationEstimator):
         # image = np.swapaxes(image, 0, 2)
         # image = np.swapaxes(image, 1, 2)
         # image = torch.tensor(image).to(self.device).float()
-        image = self.preprocess_image("/Users/tungch/workspace/yitec/godeye-core/assets/imgs/london.jpeg")
+        image = self.preprocess_image("/home/yitec/WORK/tung/godeye-core/assets/imgs/london.jpeg")
 
         X = [image.unsqueeze(0), {"img_path": "test"}]
         img_paths, pred_classes, pred_latitudes, pred_longitudes = self.model.inference(X)
