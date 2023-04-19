@@ -36,9 +36,10 @@ def lat_long_to_alpha2(coord: Tuple[float, float]) -> str:
 
     return alpha2
         
-def country_to_lat_long_json(country_name: str):
-    if(country_name in COUNTRY_CONVERTER):
-        lat, lng = COUNTRY_CONVERTER[country_name]
+def country_to_lat_long_json(alpha2_code: str):
+    """Convert alpha2 code represent country to country coordinate"""
+    if(alpha2_code in COUNTRY_CONVERTER):
+        lat, lng = COUNTRY_CONVERTER[alpha2_code]
         return lat, lng
     else:
         return None

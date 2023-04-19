@@ -23,7 +23,6 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 
@@ -88,22 +87,50 @@
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `godeye-core`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
 
+## Web demo
+A demo of the app can be accessed at this url: https://godeye.yitec.net
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
+### Prerequisites
+
+* Python 3.8
+* GPU with cuda support
+
+### Installation
+
+
+To run the project, please refer to the following steps
+
+Clone the project and update the submodules
+```
+git clone https://github.com/YoungIT/godeye-core
+cd godeye-core
+git submodule update --init --remote
+```
+
+#### Pipeline selection
+Depending on the pipeline that you select, you will need to install specific pretrained models and metadatas
+
+##### TIBHannover (default)
+To run the TIBHannover pipeline manually, you need to download the pretrained model and metadata.
+
+```
+mkdir resources
+mkdir -p resources/tibhannover/models
+wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/epoch.014-val_loss.18.4833.ckpt -O resources/tibhannover/epoch=014-val_loss=18.4833.ckpt
+wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/hparams.yaml -O resources/tibhannover/hparams.yaml
+```
+
+#### Running with Docker
 For simplicity, you can run the whole system with an interactive demo with a single Docker command
 
 ```
 docker compose up -d
 ```
 
-### Prerequisites
-
-* Python3.8
-* pip
-
-### Installation
+#### Running manually
 If you want to run the whole system manually, you can refer to the following steps.
 
 First, create a seperated conda environment
@@ -118,7 +145,6 @@ Install the required dependencies
 ```
 pip install -r requirements.txt
 ```
-### Run the pipeline manually
 
 To run the pipeline that will produce a prediction based on an image, run the following command
 
@@ -142,41 +168,6 @@ You can customize the pipeline that is used to predict the image location by ove
 | [StreetClip](https://huggingface.co/geolocal/StreetCLIP) + city |  Use StreetClip with candidate classname set to cities | `python src/core/core.py candidate-generation=streetclip geo-estimation=city-to-coord location-ranking=random metadata-extractor=empty img=YOUR_IMAGE_PATH` |
 | [StreetClip](https://huggingface.co/geolocal/StreetCLIP) + country |    with candidate classname set to country   |   `python src/core/core.py candidate-generation=streetclip geo-estimation=country-to-coord location-ranking=random metadata-extractor=empty img=YOUR_IMAGE_PATH` |
 | [TIBHannover](https://github.com/TIBHannover/GeoEstimation) | Use TIBHannover to produce the coordinate |    `python src/core/core.py candidate-generation=streetclip geo-estimation=tibhannover location-ranking=random metadata-extractor=exif img=YOUR_IMAGE_PATH` |
-
-```
-python src/core/core.py candidate-generation=streetclip geo-estimation=tibhannover location-ranking=random metadata-extractor=exif img=assets/imgs/rome.jpeg 
-```
-
-#### TIBHannover
-##### Setup
-
-To run the TIBHannover pipeline manually, you need to download the pretrained model and metadata.
-
-###### Download pretrained model
-```
-cd src/core/lib/GeoEstimation
-mkdir -p tibhannover
-wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/epoch.014-val_loss.18.4833.ckpt -O resources/tibhannover/models/epoch=014-val_loss=18.4833.ckpt
-wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/hparams.yaml -O resources/tibhannover/models/hparams.yaml
-```
-
-###### Download grid data & model
-```
-mkdir resources
-mkdir -p resources/tibhannover/s2_cells
-mkdir -p resources/tibhannover/models
-wget https://raw.githubusercontent.com/TIBHannover/GeoEstimation/original_tf/geo-cells/cells_50_5000.csv -O resources/tibhannover/s2_cells/cells_50_5000.csv
-wget https://raw.githubusercontent.com/TIBHannover/GeoEstimation/original_tf/geo-cells/cells_50_2000.csv -O resources/tibhannover/s2_cells/cells_50_2000.csv
-wget https://raw.githubusercontent.com/TIBHannover/GeoEstimation/original_tf/geo-cells/cells_50_1000.csv -O resources/tibhannover/s2_cells/cells_50_1000.csv
-
-# Download the model params & weights
-wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/epoch.014-val_loss.18.4833.ckpt -O resources/tibhannover/epoch=014-val_loss=18.4833.ckpt
-wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/hparams.yaml -O resources/tibhannover/hparams.yaml
-```
-
-
-
-
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -233,28 +224,9 @@ Project Link: [https://github.com/YoungIT/godeye-core](https://github.com/YoungI
 [stars-url]: https://github.com/YoungIT/godeye-core/stargazers
 [issues-shield]: https://img.shields.io/github/issues/YoungIT/godeye-core.svg?style=for-the-badge
 [issues-url]: https://github.com/YoungIT/godeye-core/issues
-[license-shield]: https://img.shields.io/github/license/YoungIT/godeye-core.svg?style=for-the-badge
-[license-url]: https://github.com/YoungIT/godeye-core/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
-
+[linkedin-url]: https://www.linkedin.com/company/yitec
+[product-screenshot]: images/web-demo.jpg
 
 
 
