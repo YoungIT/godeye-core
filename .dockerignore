@@ -1,0 +1,13 @@
+.env
+
+configs/
+src/
+notebooks/
+Nominatim/
+
+# ignore assets
+assets/data
+google-landmark/
+
+# ignore openstreetmap file
+*.pbf

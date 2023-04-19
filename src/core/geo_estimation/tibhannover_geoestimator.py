@@ -5,6 +5,7 @@ from pathlib import Path
 import torch
 import pytorch_lightning as pl
 import pandas as pd
+from loguru import logger
 import torchvision
 from src.core.lib.GeoEstimation.classification.train_base import MultiPartitioningClassifier
 from src.core.lib.GeoEstimation.classification.dataset import FiveCropImageDataset
@@ -112,6 +113,7 @@ class TIBHannoverEstimator(GeolocationEstimator):
         
         # ASK: Whether or not using only country candidate with the highest probability only?
         coords = self.filter_output(coords, grid_candidates)
+        logger.debug(coords)
 
         return {
             "image": image, 

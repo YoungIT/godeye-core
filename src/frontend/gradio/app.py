@@ -28,12 +28,12 @@ def filter_map(demo_image_input):
                 output = module(**output)
             # print(module, output)
 
-        coords = output["scores"]
-        lat, lon = coords[0][0][0], coords[0][0][1]
+        coords = output["coordinates"]
+        lat, lon = coords[0][0], coords[0][1]
 
     fig = go.Figure(go.Scattermapbox(
-        lat=[f'{coord[0][0]}' for coord in coords],
-        lon=[f'{coord[0][1]}' for coord in coords],
+        lat=[f'{coord[0]}' for coord in coords],
+        lon=[f'{coord[1]}' for coord in coords],
         mode='markers',
         marker=go.scattermapbox.Marker(
             size=25
@@ -71,4 +71,4 @@ with initialize(version_base="1.1", config_path="../../../configs"):
         demo.load(filter_map, [demo_image_input], map)
         btn.click(filter_map, [demo_image_input], map)
     
-    demo.launch()
+    demo.launch(server_name="0.0.0.0", share=True)
