@@ -79,8 +79,7 @@ with initialize(version_base="1.1", config_path="../../../configs"):
     pipeline = init_pipeline(cfg)
     
     # get image examples
-    logger.debug(os.path.join(base_path, "assets/imgs/gradio_image_examples"))
-    img_examples = get_image_examples(os.path.join(base_path, "assets/imgs/gradio_image_examples")) 
+    img_examples = get_image_examples("./gradio_image_examples") 
 
     with gr.Blocks() as demo:
         demo_image_input = gr.Image(label="Input image", image_mode="RGB", type="pil")
