@@ -226,5 +226,6 @@ Project Link: [https://github.com/YoungIT/godeye-core](https://github.com/YoungI
 [linkedin-url]: https://www.linkedin.com/company/yitec
 [product-screenshot]: docs/images/web-demo.jpg
 
+## License
 
-
+GodEye has Apache 2.0 license, which can be found in the [LICENSE](docs/LICENSE.md) file
