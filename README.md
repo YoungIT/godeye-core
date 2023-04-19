@@ -143,7 +143,7 @@ conda activate py38_godeye
 Install the required dependencies
 
 ```
-pip install -r requirements.txt
+pip install -e .
 ```
 
 To run the pipeline that will produce a prediction based on an image, run the following command
