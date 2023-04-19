@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/YoungIT/godeye-core">
-    <img src="images/godeye.jpg" alt="Logo" width="180" height="80">
+    <img src="docs/images/godeye.jpg" alt="Logo" width="180" height="80">
   </a>
 
 <h3 align="center">GodEye</h3>
@@ -114,13 +114,11 @@ git submodule update --init --remote
 Depending on the pipeline that you select, you will need to install specific pretrained models and metadatas
 
 ##### TIBHannover (default)
-To run the TIBHannover pipeline manually, you need to download the pretrained model and metadata.
+To run the TIBHannover pipeline manually, you need to download the pretrained model.
 
 ```
-mkdir resources
 mkdir -p resources/tibhannover/models
-wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/epoch.014-val_loss.18.4833.ckpt -O resources/tibhannover/epoch=014-val_loss=18.4833.ckpt
-wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/hparams.yaml -O resources/tibhannover/hparams.yaml
+wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/epoch.014-val_loss.18.4833.ckpt -O resources/tibhannover/models/epoch=014-val_loss=18.4833.ckpt
 ```
 
 #### Running with Docker
@@ -143,7 +141,7 @@ conda activate py38_godeye
 Install the required dependencies
 
 ```
-pip install -r requirements.txt
+pip install -e .
 ```
 
 To run the pipeline that will produce a prediction based on an image, run the following command
@@ -226,7 +224,7 @@ Project Link: [https://github.com/YoungIT/godeye-core](https://github.com/YoungI
 [issues-url]: https://github.com/YoungIT/godeye-core/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/yitec
-[product-screenshot]: images/web-demo.jpg
+[product-screenshot]: docs/images/web-demo.jpg
 
 
 
