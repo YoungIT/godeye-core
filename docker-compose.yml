@@ -3,7 +3,7 @@ services:
   godeye_core:
     build:
       context: .
-      dockerfile: ./dockers/core.Dockerfile
+      dockerfile: ./dockers/core.Dockerfile.dev
     volumes: 
       - ./src:/godeye/src
       - ./configs:/godeye/configs

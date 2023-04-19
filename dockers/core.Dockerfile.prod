@@ -20,10 +20,17 @@ WORKDIR /godeye
 
 # Install necessary packages
 RUN python3 -m pip install --no-cache-dir --upgrade pip==$PIPVERSION
-COPY . /godeye 
+
+COPY requirements.txt /godeye 
+COPY README.md /godeye
+COPY setup.py /godeye 
 
 # Install godeye core
 RUN pip install --no-cache-dir -e .
+
+# Copy workdir
+COPY . /godeye 
+
 
 
 
