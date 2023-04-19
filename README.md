@@ -114,12 +114,11 @@ git submodule update --init --remote
 Depending on the pipeline that you select, you will need to install specific pretrained models and metadatas
 
 ##### TIBHannover (default)
-To run the TIBHannover pipeline manually, you need to download the pretrained model and metadata.
+To run the TIBHannover pipeline manually, you need to download the pretrained model.
 
 ```
 mkdir -p resources/tibhannover/models
 wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/epoch.014-val_loss.18.4833.ckpt -O resources/tibhannover/models/epoch=014-val_loss=18.4833.ckpt
-wget https://github.com/TIBHannover/GeoEstimation/releases/download/pytorch/hparams.yaml -O resources/tibhannover/models/hparams.yaml
 ```
 
 #### Running with Docker
