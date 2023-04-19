@@ -31,7 +31,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/YoungIT/godeye-core">
-    <img src="images/godeye.jpg" alt="Logo" width="180" height="80">
+    <img src="docs/images/godeye.jpg" alt="Logo" width="180" height="80">
   </a>
 
 <h3 align="center">GodEye</h3>
@@ -224,7 +224,7 @@ Project Link: [https://github.com/YoungIT/godeye-core](https://github.com/YoungI
 [issues-url]: https://github.com/YoungIT/godeye-core/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/company/yitec
-[product-screenshot]: images/web-demo.jpg
+[product-screenshot]: docs/images/web-demo.jpg
 
 
 
