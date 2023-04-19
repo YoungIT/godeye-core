@@ -9,13 +9,17 @@ from .GridCell import GridCell
 class CountryCityGrid(Grid):
     @staticmethod
     def get_country_group():
+        country_names = [item.name for item in Country]
         country_group = defaultdict(list)
 
-        # country_dict = dict(Country)
         for city in City:
             elem_parts = city.name.split("_")
             city_name, country_name = "_".join(elem_parts[:-1]), elem_parts[-1]
-            country_group[Country[country_name].value].append(city.value)
+            if country_name not in country_names:
+                group_key = "Unknown"
+            else:
+                group_key = Country[country_name].value.name
+            country_group[group_key].append(city.value)
         
         return country_group
 
