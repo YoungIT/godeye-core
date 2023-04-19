@@ -13,7 +13,7 @@ from PIL import Image
 
 import numpy as np
 from .base import GeolocationEstimator
-from src.core.common.utils.geography import lat_long_to_alpha2
+from src.core.common.utils.geography import (lat_long_to_alpha2, country_to_lat_long_json)
 from src.core.common.components.CountryGrid import CountryGrid
 from src.core.core import base_path
 
@@ -69,17 +69,19 @@ class TIBHannoverEstimator(GeolocationEstimator):
             grid_candidates (CountryGrid): Country grid candidate
         """
         # Note: select only one country for test only
-        candidate_country = grid_candidates.get_cells()[0]
+        candidate_country_alpha2 = grid_candidates.get_cells()[0].repr_cls.alpha_2
 
         filter_coords = []
         for coord in coords_output:
             alpha2 = lat_long_to_alpha2(coord)
 
-            if(alpha2 == candidate_country.repr_cls.alpha_2):
+            if(alpha2 == candidate_country_alpha2):
                 filter_coords.append(coord)
 
         if(len(filter_coords) == 0): # check if tib geoestimation output not in streetclip pred country
-            return [coords_output[0]] # at least return a coordinates 
+            # get coordinate of country with highest prob pred by streetclip
+            candidate_lat, candidate_lng = country_to_lat_long_json(candidate_country_alpha2)
+            return [(candidate_lat, candidate_lng)] 
             
         return filter_coords                
 
