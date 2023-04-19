@@ -11,8 +11,6 @@ def test_country_name():
     for country in pycountry.countries:
         mapper[country.name] = country.alpha_2
 
-    file = open("test.txt", "w")
-    
     for country in Country:
         if(country.value not in pycountry_countries):
             print(country.value)
