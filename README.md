@@ -134,7 +134,7 @@ If you want to run the whole system manually, you can refer to the following ste
 First, create a seperated conda environment
 
 ```
-conda create -n py38_godeye
+conda create -n py38_godeye python=3.8 -y
 conda activate py38_godeye
 ```
 
