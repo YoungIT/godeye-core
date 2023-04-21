@@ -35,6 +35,16 @@ def lat_long_to_alpha2(coord: Tuple[float, float]) -> str:
         alpha2 = results[0]["cc"]
 
     return alpha2
+
+def lat_long_to_place_rg(coord: Tuple[float, float]) -> str:
+    """Convert (lat, lng) to admin 1 region"""
+    results = rg.search(coord) # default mode = 2
+    
+    name = None
+    if(len(results) > 0):
+        name = results[0]["admin1"]
+
+    return name
         
 def country_to_lat_long_json(alpha2_code: str):
     """Convert alpha2 code represent country to country coordinate"""
