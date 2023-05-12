@@ -111,7 +111,7 @@ git submodule update --init --remote
 ```
 
 #### Pipeline selection
-Depending on the pipeline that you select, you will need to install specific pretrained models and metadatas
+Depending on the pipeline that you select, you will need to install specific pretrained models and metadatas.
 
 ##### TIBHannover (default)
 To run the TIBHannover pipeline manually, you need to download the pretrained model.
