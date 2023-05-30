@@ -11,6 +11,7 @@ import numpy as np
 import plotly.graph_objects as go
 
 from src.core.core import init_pipeline
+from src.core.common.utils.geography import lat_long_to_place_rg
 
 base_path = pyrootutils.find_root(search_from=__file__, indicator=[".git", "setup.cfg"])
 
@@ -46,15 +47,24 @@ def filter_map(demo_image_input):
 
         coords = output["coordinates"]
         lat, lon = coords[0][0], coords[0][1]
+    
+    lats, lons, labels = [], [], []
+    for coord in coords:
+        lat, lon = coord[0], coord[1]
+        label = lat_long_to_place_rg((lat, lon))
+             
+        lats.append(f"{lat}")
+        lons.append(f"{lon}")
+        labels.append(label)
 
     fig = go.Figure(go.Scattermapbox(
-        lat=[f'{coord[0]}' for coord in coords],
-        lon=[f'{coord[1]}' for coord in coords],
+        lat=lats,
+        lon=lons,
         mode='markers',
         marker=go.scattermapbox.Marker(
             size=25
         ),
-        text=['Hi'],
+        text=labels,
     ))
 
     fig.update_layout(
